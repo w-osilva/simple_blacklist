@@ -1,10 +1,8 @@
 # SimpleBlacklist
-___
 
 This project is designed to make easy the task of sanitizing string that contains words not allowed.
 
 ## Installation
-___
 
 Add this line to your application's Gemfile:
 
@@ -21,17 +19,15 @@ Or install it yourself as:
     $ gem install simple_blacklist
 
 ## Setup (Rails)
-___
 
     $ simple_blacklist --configure
 
 Will be created:
 
- * *config/initializers/simple_blacklist.rb*
- * *config/blacklist.yml*
+ * **config/initializers/simple_blacklist.rb**
+ * **config/blacklist.yml**
 
 ## Usage
-___
 
 In your code, do:
 
@@ -42,7 +38,7 @@ SimpleBlacklist.sanitize(offensive_text)
 # "Kiss my xxxxx"
 ```
 
-If configured *letters_variations* is also possible to sanitize texts written with special characters
+If configured **letters_variations** is also possible to sanitize texts written with special characters
 ```ruby
 offensive_text = "Kiss my @$$"
 SimpleBlacklist.sanitize(offensive_text)
@@ -51,7 +47,6 @@ SimpleBlacklist.sanitize(offensive_text)
 ```
 
 ## Development
-___
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
@@ -63,7 +58,6 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/[USERN
 
 
 ## License
-___
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
