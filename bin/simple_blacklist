@@ -1,50 +1,15 @@
 #!/usr/bin/env ruby
-require 'fileutils'
-require 'simple_blacklist/config'
+require 'simple_blacklist/setup'
 
-base = BLACKLIST_BASE
-config_dir = File.join(base, BLACKLIST_CONFIG['config_path'])
-initializers_dir = File.join(config_dir, BLACKLIST_CONFIG['initializers_path'])
-FileUtils.mkdir_p(config_dir) unless File.directory?(config_dir)
-FileUtils.mkdir_p(initializers_dir) unless File.directory?(initializers_dir)
-initializer_file = File.join(initializers_dir, 'simple_blacklist.rb')
-blacklist_file = File.join(config_dir, 'blacklist.yml')
+setup = SimpleBlacklist::Setup.new
 
 if ARGV.include? "--configure"
-  initializer_file_content = <<-FILE
-# Define simple_blacklist file
-SimpleBlacklist.set_blacklist_file(File.join(BLACKLIST_BASE, "config", "blacklist.yml"))
-
-# Defines masks that will replace the words contained in the simple_blacklist
-SimpleBlacklist.set_mask_to_denied_words("xxxxx")
-
-# list of letters and characters that can replace the letters
-SimpleBlacklist.set_letters_variations({
- 'a' => ['@', '4', 'ª'],
- 'e' => ['3', '&'],
- 'i' => ['|', '1'],
- 'o' => ['0', 'º'],
- 's' => ['$', '5'],
- 't' => ['7'],
- 'g' => ['6'],
- 'b' => ['6', '8']
-})
-  FILE
-
-  blacklist_file_content = <<-FILE
-ass
-fuck
-bitch
-  FILE
-
-  File.open(initializer_file, 'wb') {|f| f.write(initializer_file_content) } unless File.exist?(initializer_file)
-  File.open(blacklist_file, 'wb') {|f| f.write(blacklist_file_content) } unless File.exist?(blacklist_file)
-
+  setup.configure
   puts " ༼ つ ◕_◕ ༽つ OK... Gem has been set!!!    "
   exit
 end
 
-unless File.exist?(initializer_file)
+unless File.exist?(setup.initializer_file)
   puts " ༼ つ ◕_◕ ༽つ OOOPS... Gem has not yet been set. To set run 'simple_blacklist --configure'    "
   exit
 end

@@ -16,12 +16,13 @@ Gem::Specification.new do |spec|
   spec.test_files    = `git ls-files -- {test,spec}/*`.split("\n")
   spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   spec.require_paths = ["lib"]
-  # spec.required_ruby_version = '>= 2.0.0'
+  spec.required_ruby_version = '>= 2.0.0'
 
   spec.summary       = %q{Simple Blacklist to sanitize strings}
   spec.description   = %q{This project is designed to make easy the task of sanitizing string that contains words not allowed. }
 
-  spec.add_dependency "bundler", "~> 1.10"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_dependency "bundler"
+
+  spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end

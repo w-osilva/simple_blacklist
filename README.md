@@ -24,8 +24,8 @@ Or install it yourself as:
 
 Will be created:
 
- * **config/initializers/simple_blacklist.rb**
- * **config/blacklist.yml**
+ * **config/initializers/simple_blacklist.rb** (file where are defined some parameters to the gem)
+ * **config/blacklist.yml** (list where you must add words that you want deny)
 
 ## Usage
 
@@ -35,7 +35,7 @@ In your code, do:
 offensive_text = "Kiss my ass"
 SimpleBlacklist.sanitize(offensive_text)
 
-# "Kiss my xxxxx"
+# "Kiss my ****"
 ```
 
 If configured **letters_variations** is also possible to sanitize texts written with special characters
@@ -43,7 +43,7 @@ If configured **letters_variations** is also possible to sanitize texts written 
 offensive_text = "Kiss my @$$"
 SimpleBlacklist.sanitize(offensive_text)
 
-# "Kiss my xxxxx"
+# "Kiss my ****"
 ```
 
 ## Development
